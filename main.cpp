@@ -39,7 +39,7 @@ string generatePassword(int length, bool useNumbers, bool useLetters, bool useSy
     string password = "";
     unordered_set<char> usedChars;
 
-    // Гарантируем хотя бы один символ каждого выбранного типа
+
     if (useNumbers) {
         password += numbers[distribution(generator) % numbers.size()];
         usedChars.insert(password.back());
@@ -53,7 +53,7 @@ string generatePassword(int length, bool useNumbers, bool useLetters, bool useSy
         usedChars.insert(password.back());
     }
 
-    // Генерация оставшихся символов
+   
     while (password.size() < length) {
         char randomChar = characters[distribution(generator)];
         if (usedChars.find(randomChar) == usedChars.end() || password.size() >= 3) {
@@ -64,7 +64,6 @@ string generatePassword(int length, bool useNumbers, bool useLetters, bool useSy
     return password;
 }
 
-// Функция для оценки надежности пароля
 string evaluateStrength(const string &password) {
     bool hasLower = false, hasUpper = false, hasDigit = false, hasSpecial = false;
 
